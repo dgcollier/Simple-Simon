@@ -7,11 +7,10 @@
 
     <script type="text/javascript" src="/js/jquery.js"></script>
     
-
 </head>
 <body>
     <h1 id="title">Simple Simon</h1>
-    <h2 id="instructions">Repeat Simon's pattern by clicking the dots in the same order he does.</h2>
+    <h2 id="instructions">He does. You do. Repeat.</h2>
 
     <div id="borderBox" class="well">
         <div id="0" class="box green"></div>
@@ -22,135 +21,10 @@
 
     <button type="button" id="start" class="btn-lg">New Game</button>
     <button type="button" id="quit" class="btn-lg">Quit Game</button>
-    <button type=:button id="round" class="btn-lg">Round: 1</button>
+    <button type="button" id="round" class="btn-lg">Round: 0</button>
+    <button type="button" id="high-score" class="btn-lg">High Score: 0</button>
 
-<script type="text/javascript">
-"use strict";
-
-    var gamerClick = [];
-    var simonClick = [];
-    var boxes = $(".box");
-
-
-    function startGame () {
-        simonClick = [];
-        simonsTurn();
-    };
-
-    function simonsTurn () {
-        gamerClick= [];
-        selectRandom();
-        replayArray();
-    };
-
-    function selectRandom () {
-        var random = Math.floor(Math.random() * 4);
-        var highlightButton = boxes[random];
-        var id = highlightButton.id
-        console.log(id);
-        simonClick.push(id);
-        console.log(simonClick);
-    };
-
-    function highlightBox (box) {
-           box.addClass("highlight");
-        setTimeout(function () {
-            box.removeClass("highlight");
-        }, 500);
-    };
-
-    function replayArray () {
-
-        disableGamerClick();
-
-        $("#round").attr("value", ("Round: " + (simonClick.length)));
-
-        var i = 0;
-        
-        var intervalId = setInterval(function () {
-            
-            highlightBox($("#" + simonClick[i]));
-            
-            i++;
-
-            if (i >= simonClick.length){
-                clearInterval(intervalId);
-                enableGamerClick();
-            }
-        }, 1000);
-    };
-
-    function compareArrays () {
-        //set variable for comparison
-        var gamerError = false;
-        // loop through gamerClick and compare arrays
-        for (var i = 0; i < gamerClick.length; i++) {
-            if (simonClick[i] != gamerClick[i]) {
-                gamerError = true;
-                break;
-            }
-        }
-
-        if (gamerError) {
-            endGame();
-        } else if (gamerClick.length == simonClick.length) {
-            simonsTurn();
-        }
-    };
-
-    function endGame () {
-        // reload page, prompt to play again
-        location.reload(true);
-
-        confirm("Try, try again?");
-        if (confirm) {
-            startGame();
-        }
-    };
-
-    function quitGame () {
-        // stop the game
-        alert("You have quit the game.");
-        location.reload(true);
-
-    };
-
-    function gamerClicked () {
-        // create variable to collect id of dot clicked
-        var gamerChoice = this.id
-        console.log(gamerChoice);
-        // call highlight on *this* 
-        highlightBox($(this));
-        // add id of dot clicked by user to gamerClick array
-        gamerClick.push(gamerChoice);
-        console.log(gamerClick);
-        // call compareArrays();
-        compareArrays();
-    };
-
-    function enableGamerClick () {
-        $("#0").on("click", gamerClicked);
-        $("#1").on("click", gamerClicked);
-        $("#2").on("click", gamerClicked);
-        $("#3").on("click", gamerClicked);
-    };
-
-    function disableGamerClick () {
-        $("#0").off("click", gamerClicked);
-        $("#1").off("click", gamerClicked);
-        $("#2").off("click", gamerClicked);
-        $("#3").off("click", gamerClicked);
-    };
-
-    $("#start").click(function() {
-        startGame();
-    });
-
-    $("#quit").click(function() {
-        quitGame();
-    })
-
-</script>
+<script type="text/javascript" src="/js/simon.js"></script>
 
 
 </body>

@@ -40,7 +40,7 @@
 }
 
 .highlight {
-    opacity: .3;
+    opacity: 0.3;
     border-color: #EDE1D7;
 }
 
@@ -76,4 +76,32 @@
 
 body {
     text-align: center;
+}
+
+button {
+    width: 180px;
+}
+
+#start {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+}
+
+#quit {
+    position: fixed;
+    top: 120px;
+    left: 20px;
+}
+
+#round {
+    position: fixed;
+    top: 220px;
+    left: 20px;
+}
+
+#high-score {
+    position: fixed;
+    top: 320px;
+    left: 20px;
 }
