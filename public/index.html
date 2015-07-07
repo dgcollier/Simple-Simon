@@ -20,8 +20,8 @@
         <div id="3" class="box blue"></div>
     </div>
 
-    <button type="button" id="start" class="btn-lg">Start Game</button>
-    <button type="button" id="pause" class="btn-lg">Pause Game</button>
+    <button type="button" id="start" class="btn-lg">New Game</button>
+    <button type="button" id="quit" class="btn-lg">Quit Game</button>
     <button type=:button id="round" class="btn-lg">Round: 1</button>
 
 <script type="text/javascript">
@@ -31,9 +31,6 @@
     var simonClick = [];
     var boxes = $(".box");
 
-    $("#start").click(function() {
-        startGame();
-    });
 
     function startGame () {
         simonClick = [];
@@ -48,50 +45,46 @@
 
     function selectRandom () {
         var random = Math.floor(Math.random() * 4);
-        // console.log(random);
-        simonClick.push(boxes[random].id);
+        var highlightButton = boxes[random];
+        var id = highlightButton.id
+        console.log(id);
+        simonClick.push(id);
         console.log(simonClick);
-
-    };
-
-    boxes.click(function(e) {
-        var boxClicked = $(this);
-        highlightBox(boxClicked);
-    });
-
-    function replayArray () {
-
-        disablegamerClick(); 
-        // ***NEED TO CREATE THIS FUNCTION
-
-        $("#round").attr("value", ("Round: " + simonClick.length));
-
-        var i = 0;
-        
-        var interval = setInterval(function () {
-            highlightBox($("#" + simonClick[i]));
-            i++;
-
-            if (i >= simonClick.length){
-                clearInterval(interval);
-                enablegamerClick();
-                // ***NEED TO CREATE THIS FUNCTION
-            }
-        }, 800);
     };
 
     function highlightBox (box) {
-        box.addClass("highlight");
+           box.addClass("highlight");
         setTimeout(function () {
             box.removeClass("highlight");
         }, 500);
+    };
+
+    function replayArray () {
+
+        disableGamerClick();
+
+        $("#round").attr("value", ("Round: " + (simonClick.length)));
+
+        var i = 0;
+        
+        var intervalId = setInterval(function () {
+            
+            highlightBox($("#" + simonClick[i]));
+            
+            i++;
+
+            if (i >= simonClick.length){
+                clearInterval(intervalId);
+                enableGamerClick();
+            }
+        }, 1000);
     };
 
     function compareArrays () {
         //set variable for comparison
         var gamerError = false;
         // loop through gamerClick and compare arrays
-        for (var i = 0, i < gamerClick.length; i++) {
+        for (var i = 0; i < gamerClick.length; i++) {
             if (simonClick[i] != gamerClick[i]) {
                 gamerError = true;
                 break;
@@ -108,31 +101,54 @@
     function endGame () {
         // reload page, prompt to play again
         location.reload(true);
-        confirm("You lost. Play again?");
-        if(confirm) {
+
+        confirm("Try, try again?");
+        if (confirm) {
             startGame();
         }
     };
 
-    function quit () {
+    function quitGame () {
         // stop the game
         alert("You have quit the game.");
         location.reload(true);
-    }
+
+    };
 
     function gamerClicked () {
         // create variable to collect id of dot clicked
         var gamerChoice = this.id
+        console.log(gamerChoice);
         // call highlight on *this* 
-        highlightBox(this);
+        highlightBox($(this));
         // add id of dot clicked by user to gamerClick array
         gamerClick.push(gamerChoice);
+        console.log(gamerClick);
         // call compareArrays();
+        compareArrays();
+    };
 
-    }
+    function enableGamerClick () {
+        $("#0").on("click", gamerClicked);
+        $("#1").on("click", gamerClicked);
+        $("#2").on("click", gamerClicked);
+        $("#3").on("click", gamerClicked);
+    };
 
+    function disableGamerClick () {
+        $("#0").off("click", gamerClicked);
+        $("#1").off("click", gamerClicked);
+        $("#2").off("click", gamerClicked);
+        $("#3").off("click", gamerClicked);
+    };
 
+    $("#start").click(function() {
+        startGame();
+    });
 
+    $("#quit").click(function() {
+        quitGame();
+    })
 
 </script>
 

@@ -10,10 +10,9 @@
 .green {
     background-color: #63FF63;
     border-top-left-radius: 100%;
-    border-bottom-right-radius: 5%;
+    border-bottom-right-radius: 10%;
     border-top-right-radius: 5%;
     border-bottom-left-radius: 5%;
-
 }
 
 .red {
@@ -21,19 +20,20 @@
     border-top-left-radius: 5%;
     border-bottom-right-radius: 5%;
     border-top-right-radius: 100%;
-    border-bottom-left-radius: 5%;}
+    border-bottom-left-radius: 10%;
+}
 
 .yellow {
     background-color: #FFFF00;
     border-top-left-radius: 5%;
     border-bottom-right-radius: 5%;
-    border-top-right-radius: 5%;
+    border-top-right-radius: 10%;
     border-bottom-left-radius: 100%;
 }
 
 .blue {
     background-color: #70AAD3;
-    border-top-left-radius: 5%;
+    border-top-left-radius: 10%;
     border-bottom-right-radius: 100%;
     border-top-right-radius: 5%;
     border-bottom-left-radius: 5%;
