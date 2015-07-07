@@ -3,6 +3,7 @@
     // Declare variable for jQuery array with all buttons
     var gamerClick;
     var simonClick;
+    var highScore = 0;
 
     // Function called when gamer clicks "Start Game" or wants to continue after losing
     // Resets Simon's array for game reset
@@ -17,6 +18,7 @@
     function simonsTurn () {
         gamerClick = [];
         checkHighScore();
+        console.log(highScore);
         selectRandom();
         replayArray();
     };
@@ -25,10 +27,10 @@
         var random = Math.floor(Math.random() * 4);
         var boxes = $(".box");
         var highlightButton = boxes[random];
-        var id = highlightButton.id
-        console.log(id);
+        var id = highlightButton.id;
+        // console.log(id);
         simonClick.push(id);
-        console.log(simonClick);
+        // console.log(simonClick);
     };
 
     function highlightBox (box) {
@@ -82,8 +84,6 @@
 
         var loser = confirm("You lost. Try again?");
         if (loser) {
-            // simonClick = [];
-            // gamerClick = [];
             startGame();
         } else {
             location.reload(true);
@@ -96,20 +96,26 @@
             alert("Your final score was " + (simonClick.length - 1) + ". Did you even try, bro?");
         } else if (simonClick.length < 7) {
             alert("Your final score was " + (simonClick.length - 1) + ". Good effort.");
-        } 
-        location.reload(true);
+        } else if (simonClick.length < 10) {
+            alert("Your final score was " + (simonClick.length - 1) + ". Great job!");
+        } else if (simonClick.length < 15) {
+            alert("Your final score was " + (simonClick.length - 1) + ". Wow! You're awesome!");
+        } else {
+            alert("Your final score was " + (simonClick.length - 1) + ". SUPER. HUMAN.");
+        }
 
+        location.reload(true);
     };
 
     function gamerClicked () {
         // create variable to collect id of dot clicked
         var gamerChoice = this.id
-        console.log(gamerChoice);
+        // console.log(gamerChoice);
         // call highlight on *this* 
         highlightBox($(this));
         // add id of dot clicked by user to gamerClick array
         gamerClick.push(gamerChoice);
-        console.log(gamerClick);
+        // console.log(gamerClick);
         // call compareArrays();
         compareArrays();
     };
@@ -131,12 +137,12 @@
     function checkHighScore () {
 
         var currentScore = simonClick.length;
-        var highScore = 0;
 
         if(currentScore > highScore) {
             $("#high-score").text("High Score: " + currentScore);
+            highScore += 1;
         } else {
-            $("#high-score").text("High Score: " + highScore);
+            $("#high-score").text("High Score: " + (highScore));
         }
     };
 
