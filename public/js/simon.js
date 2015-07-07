@@ -4,6 +4,7 @@
     var gamerClick;
     var simonClick;
     var highScore = 0;
+    // var difficulty = 10000;
 
     // Function called when gamer clicks "Start Game" or wants to continue after losing
     // Resets Simon's array for game reset
@@ -18,7 +19,7 @@
     function simonsTurn () {
         gamerClick = [];
         checkHighScore();
-        console.log(highScore);
+        // console.log(highScore);
         selectRandom();
         replayArray();
     };
@@ -30,7 +31,7 @@
         var id = highlightButton.id;
         // console.log(id);
         simonClick.push(id);
-        // console.log(simonClick);
+        console.log(simonClick);
     };
 
     function highlightBox (box) {
