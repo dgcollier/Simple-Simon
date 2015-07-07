@@ -1,0 +1,79 @@
+.box {
+    width: 200px;
+    height: 200px;
+    margin: 5px;
+    float: left;
+    border: solid #A09D8E 2px;
+    opacity: 1;
+}
+/* Starting Circle Colors*/
+.green {
+    background-color: #63FF63;
+    border-top-left-radius: 100%;
+    border-bottom-right-radius: 5%;
+    border-top-right-radius: 5%;
+    border-bottom-left-radius: 5%;
+
+}
+
+.red {
+    background-color: #FF4732;
+    border-top-left-radius: 5%;
+    border-bottom-right-radius: 5%;
+    border-top-right-radius: 100%;
+    border-bottom-left-radius: 5%;}
+
+.yellow {
+    background-color: #FFFF00;
+    border-top-left-radius: 5%;
+    border-bottom-right-radius: 5%;
+    border-top-right-radius: 5%;
+    border-bottom-left-radius: 100%;
+}
+
+.blue {
+    background-color: #70AAD3;
+    border-top-left-radius: 5%;
+    border-bottom-right-radius: 100%;
+    border-top-right-radius: 5%;
+    border-bottom-left-radius: 5%;
+}
+
+.highlight {
+    opacity: .3;
+    border-color: #EDE1D7;
+}
+
+#borderBox {
+    height: 478px;
+    width: 478px;
+    background-color: #C9C5B3;
+    border: 10px solid #A09D8E;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 50%;
+}
+
+#title,
+#instructions {
+    font-family: Helvetica, Arial, sans-serif;
+    margin-left: 50px;
+}
+
+#title {
+    font-size: 60px;
+    margin-top: 20px;
+}
+
+#instructions, {
+    font-size: 24px;
+}
+
+#titleText,
+#instructionText {
+    text-align: center;
+}
+
+body {
+    text-align: center;
+}
