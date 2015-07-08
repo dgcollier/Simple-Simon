@@ -1,12 +1,24 @@
+/* Body Text (Title, Instructions, Buttons) */
+body {
+    text-align: center;
+}
+
+/* Buttons and Game Info Panels */
+button {
+    width: 185px;
+}
+
+/* Game Buttons (Universal) */
 .box {
     width: 200px;
     height: 200px;
     margin: 5px;
     float: left;
     border: solid #A09D8E 2px;
-    opacity: 1;
+    opacity: .65;
 }
-/* Starting Circle Colors*/
+
+/* Game Buttons (Individual) */
 .green {
     background-color: #63FF63;
     border-top-left-radius: 100%;
@@ -39,11 +51,13 @@
     border-bottom-left-radius: 5%;
 }
 
+/* Toggled Class for Game Buttons */
 .highlight {
-    opacity: 0.3;
+    opacity: 1;
     border-color: #EDE1D7;
 }
 
+/* Game Board Background */
 #borderBox {
     height: 478px;
     width: 478px;
@@ -54,6 +68,7 @@
     border-radius: 50%;
 }
 
+/* Headings */
 #title,
 #instructions {
     font-family: Helvetica, Arial, sans-serif;
@@ -67,17 +82,4 @@
 
 #instructions, {
     font-size: 24px;
-}
-
-#titleText,
-#instructionText {
-    text-align: center;
-}
-
-body {
-    text-align: center;
-}
-
-button {
-    width: 185px;
 }
